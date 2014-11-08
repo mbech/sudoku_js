@@ -12,18 +12,16 @@ body{
   background: $color-ebony;
 }
 
-#board-container{
+#sudo-board{
   margin: 1em auto;
-  width: 30em;
-  height: 30em;
-  overflow: auto;
+  max-width: 600px;
 }
 
 .sudo-block{
   background: $color-white;
   display: inline-block;
   box-sizing: border-box;
-  border: 3px solid $color-ebony;
+  border: 2px solid $color-ebony;
   width: 33.33%; 
   height: 33.4%;
   vertical-align: bottom;
@@ -31,4 +29,16 @@ body{
 
 .sudo-block:nth-child(even){
   background: $color-alto;
+}
+
+.sudo-cell{
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid $color-ebony;
+  width: 33.33%; 
+  height: 34%;
+  vertical-align: bottom;
+  font-size: 2em;
+  line-height: 2em;
+  text-align: center;
 }

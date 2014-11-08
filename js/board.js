@@ -81,14 +81,24 @@ SUD.Board.prototype = {
     for(var i=0; i < 9; i++){
       if(this.getCellVal(rowNeighbors[i]) === val_attempt){
         conflicts.row = true;
-      }
+      };
       if(this.getCellVal(colNeighbors[i]) === val_attempt){
         conflicts.col = true;
-      }
+      };
       if(this.getCellVal(blockNeighbors[i]) === val_attempt){
         conflicts.block = true;
-      }
+      };
     };
     return conflicts;
+  },
+
+  cellIdsByBlock: function(blockId){
+    var cellIds = [];
+    for(var i=0; i < 81; i++){
+      if(this.getCellBlock(i) === blockId){
+        cellIds.push(i);
+     };
+    };
+    return cellIds;
   }
-};
+}

@@ -1,7 +1,8 @@
 var SUD = SUD || {};
 
 $(document).ready(function(){
-  SUD.render.emptyGrid();
+  var board = SUD.run();
+  SUD.render.board(board);
 });
 
 SUD.run= function(sudoState){
