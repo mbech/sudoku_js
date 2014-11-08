@@ -1,8 +1,12 @@
 var SUD = SUD || {};
 
+$(document).ready(function(){
+  SUD.render.emptyGrid();
+});
+
 SUD.run= function(sudoState){
-  console.log(this);
   var state = sudoState || this.sudoStates.easyStart(); 
-  this.board = Object.create(this.Board.prototype);
-  this.board.init(state);  
+  var board = Object.create(this.Board.prototype).init(state);
+
+  this.render.board(board);
 }

@@ -2,4 +2,22 @@ html, body {
   height: 100%; }
 
 body {
-  background: white; }
+  background: #070716; }
+
+#board-container {
+  margin: 1em auto;
+  width: 30em;
+  height: 30em;
+  overflow: auto; }
+
+.sudo-block {
+  background: white;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 3px solid #070716;
+  width: 33.33%;
+  height: 33.4%;
+  vertical-align: bottom; }
+
+.sudo-block:nth-child(even) {
+  background: #dedede; }
