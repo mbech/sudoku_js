@@ -6,7 +6,8 @@ $(document).ready(function(){
 
 SUD.run= function(sudoState){
   var state = sudoState || this.sudoStates.easyStart(); 
-  var board = Object.create(this.Board.prototype).init(state);
+  var board = Object.create(this.Board.prototype);
+  board.init(state);
 
-  this.render.board(board);
+  return board;
 }
