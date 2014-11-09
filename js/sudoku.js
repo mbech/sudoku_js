@@ -1,15 +1,19 @@
 var SUD = SUD || {};
 
 $(document).ready(function(){
-  var board = SUD.run();
-  SUD.render.board(board);
-  SUD.render.userInputMenu();
+  SUD.run();
 });
 
-SUD.run= function(sudoState){
+SUD.createBoardInstance = function(sudoState){
   var state = sudoState || this.sudoStates.easyStart(); 
   var board = Object.create(this.Board.prototype);
   board.init(state);
 
   return board;
-}
+};
+
+SUD.run = function(sudoState){
+  var board = SUD.createBoardInstance(sudoState);
+  this.render.board(board);
+  this.render.userInputMenu();
+};

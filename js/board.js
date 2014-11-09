@@ -45,8 +45,8 @@ SUD.Board.prototype = {
     for(var i=0; i < 81; i++){
       if(this.getCellRow(i) === cellRow){
         rowNeighbors.push(i);
-      };
-    };
+      }
+    }
     return rowNeighbors;
   },
 
@@ -56,8 +56,8 @@ SUD.Board.prototype = {
     for(var i=0; i < 81; i++){
       if(i !== cellId && this.getCellCol(i) === cellCol){
         colNeighbors.push(i);
-      };
-    };
+      }
+    }
     return colNeighbors;
   },
 
@@ -67,8 +67,8 @@ SUD.Board.prototype = {
     for(var i=0; i < 81; i++){
       if(this.getCellBlock(i) === cellBlock){
         blockNeighbors.push(i);
-      };
-    };
+      }
+    }
     return blockNeighbors;
   },
 
@@ -81,14 +81,14 @@ SUD.Board.prototype = {
     for(var i=0; i < 9; i++){
       if(this.getCellVal(rowNeighbors[i]) === val_attempt){
         conflicts.row = true;
-      };
+      }
       if(this.getCellVal(colNeighbors[i]) === val_attempt){
         conflicts.col = true;
-      };
+      }
       if(this.getCellVal(blockNeighbors[i]) === val_attempt){
         conflicts.block = true;
-      };
-    };
+      }
+    }
     return conflicts;
   },
 
@@ -97,8 +97,8 @@ SUD.Board.prototype = {
     for(var i=0; i < 81; i++){
       if(this.getCellBlock(i) === blockId){
         cellIds.push(i);
-     };
-    };
+     }
+    }
     return cellIds;
   }
-}
+};

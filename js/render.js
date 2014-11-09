@@ -1,16 +1,5 @@
 //Contains functions for board draw/update DOM manipulations
 SUD.render = {
-  emptyGrid: function(){
-    var $board = $('#sudo-board');
-    $board.empty();
-    //Create and append blocks
-    for(var i=0; i < 9; i++){
-      var $block = $("<div>", {class: "sudo-block"}); 
-      $block.attr('data-block-id', i);
-      $board.append($block); 
-    };
-  },
-
   board: function(board){
     var $board = $('#sudo-board');
     $board.empty();
@@ -27,18 +16,20 @@ SUD.render = {
       for(var j=0,len=cellIds.length; j < len; j++){
         var cellId = "cell_" + cellIds[j];
         var $cell = $("<div>", {id: cellId, class: "sudo-cell"}); 
-
         var cellValText = board.getCellVal(cellIds[j]);
-        if (cellValText === 0){cellValText = "";}
-
+        if (cellValText === 0){
+          cellValText = "";
+        }
         $cell.text(cellValText);
         $block.append($cell);
-      };
+      }
+
       //cell nodes added to this block, so append it to the board
       $board.append($block); 
-    };
+    }
+
     this.selectedCell(board);
-    this.highlightNeighbors(board);
+    this.highlightedNeighbors(board);
   },
 
   selectedCell: function(board){
@@ -48,14 +39,14 @@ SUD.render = {
   },
 
   //find neighbors of selected cell and apply 'is-highlighted' class
-  highlightNeighbors: function(board){
+  highlightedNeighbors: function(board){
     $(".sudo-cell.is-highlighted").removeClass("is-highlighted");
 
     var selectedId = board.selectedCell;
     var rowNeighborIds = board.neighborsRow(selectedId);
     var colNeighborIds = board.neighborsCol(selectedId);
     var blockNeighborIds = board.neighborsBlock(selectedId);
- 
+
     var allNeighbors = rowNeighborIds.concat(colNeighborIds, blockNeighborIds);
 
     var len = allNeighbors.length;
@@ -63,9 +54,9 @@ SUD.render = {
       var cellId = "cell_" + allNeighbors[i];
       var $currentCell = $("#" + cellId);
       $currentCell.addClass("is-highlighted");
-    };
+    }
   },
-  
+
   userInputMenu: function(){
     var $menu = $("<menu>", {id: "user-input-menu"}); 
     //Add menu input divs for values, 1 through 9
@@ -81,5 +72,4 @@ SUD.render = {
 
     $("#user-input-container").append($menu);
   }
-
 };
