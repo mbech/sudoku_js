@@ -46,15 +46,16 @@ body{
   text-align: center;
 }
 
-.sudo-cell:hover{
+.sudo-cell:hover, .is-selected{
   cursor: pointer;
   border: 3px solid $color-java-blue;
+  border-top: 1px solid $color-java-blue;
+  border-bottom: 5px solid darken($color-java-blue, 20%);
 }
 
 .is-selected{
-  background: $color-java-blue;
+  background: lighten($color-java-blue, 10%);
   color: $color-white;
-  border: 3px solid $color-ebony;
 }
 
 .is-highlighted{

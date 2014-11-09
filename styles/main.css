@@ -34,14 +34,15 @@ body {
   line-height: 2em;
   text-align: center; }
 
-.sudo-cell:hover {
+.sudo-cell:hover, .is-selected {
   cursor: pointer;
-  border: 3px solid #1fbad6; }
+  border: 3px solid #1fbad6;
+  border-top: 1px solid #1fbad6;
+  border-bottom: 5px solid #126d7d; }
 
 .is-selected {
-  background: #1fbad6;
-  color: white;
-  border: 3px solid #070716; }
+  background: #44cbe4;
+  color: white; }
 
 .is-highlighted {
   background: #9de4f1; }
