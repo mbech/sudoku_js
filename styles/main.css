@@ -6,7 +6,9 @@ body {
 
 #sudo-board {
   margin: 1em auto;
-  max-width: 600px; }
+  max-width: 600px;
+  border: 5px solid #caf0f7;
+  border-radius: 5px; }
 
 .sudo-block {
   background: white;
@@ -28,5 +30,21 @@ body {
   height: 34%;
   vertical-align: bottom;
   font-size: 2em;
+  height: 2em;
   line-height: 2em;
   text-align: center; }
+
+.sudo-cell:hover {
+  cursor: pointer;
+  border: 3px solid #1fbad6; }
+
+.is-selected {
+  background: #1fbad6;
+  color: white;
+  border: 3px solid #070716; }
+
+.is-highlighted {
+  background: #9de4f1; }
+
+.is-in-conflict {
+  background: red; }
