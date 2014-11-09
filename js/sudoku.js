@@ -13,7 +13,18 @@ SUD.createBoardInstance = function(sudoState){
 };
 
 SUD.run = function(sudoState){
-  var board = SUD.createBoardInstance(sudoState);
-  this.render.board(board);
+  //create a new board instance, store it as a property
+  this.currentBoard = SUD.createBoardInstance(sudoState);
+  //Render the board and set up event bindings
+  this.render.board(this.currentBoard);
   this.render.userInputMenu();
+  this.bind.cellSelection();
+};
+
+SUD.updateSelectedCell = function(cellId){
+  //update data in board object 
+  this.currentBoard.setSelectedCell(cellId);
+  //then rerender based on that updated board
+  this.render.selectedCell(this.currentBoard);
+  this.render.highlightedNeighbors(this.currentBoard);
 };
