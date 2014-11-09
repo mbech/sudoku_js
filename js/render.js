@@ -1,3 +1,4 @@
+//Contains functions for board draw/update DOM manipulations
 SUD.render = {
   emptyGrid: function(){
     var $board = $('#sudo-board');
@@ -43,6 +44,22 @@ SUD.render = {
     var $cell = $("#cell_" + board.selectedCell);  
     $(".sudo-cell.is-selected").removeClass("is-selected");
     $cell.addClass("is-selected");
+  },
+
+  userInputMenu: function(){
+    var $menu = $("<menu>", {id: "user-input-menu"}); 
+    //Add menu input divs for values, 1 through 9
+    for(var i = 1; i < 10; i++){
+      var $item = $("<div>", {class: "input-item"});  
+      $item.attr("data-input-val", i).text(i);
+      $menu.append($item);
+    }
+    //Special case for last item in menu, 'erase'
+    var $itemErase = $("<div>", {class: "input-item"});  
+    $itemErase.attr("data-input-val", 0).text("erase");
+    $menu.append($itemErase);
+
+    $("#user-input-container").append($menu);
   }
 
 };

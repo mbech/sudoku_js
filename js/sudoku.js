@@ -3,6 +3,7 @@ var SUD = SUD || {};
 $(document).ready(function(){
   var board = SUD.run();
   SUD.render.board(board);
+  SUD.render.userInputMenu();
 });
 
 SUD.run= function(sudoState){

@@ -14,7 +14,8 @@ body{
 
 #sudo-board{
   margin: 1em auto;
-  max-width: 600px;
+  max-width: 500px;
+  max-height: 500px;
   border: 5px solid lighten($color-java-blue, 40%);
   border-radius: 5px;
 }
@@ -40,9 +41,9 @@ body{
   width: 33.33%; 
   height: 34%;
   vertical-align: bottom;
-  font-size: 2em;
-  height: 2em;
-  line-height: 2em;
+  font-size: 1.5em;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
 }
 
@@ -64,4 +65,30 @@ body{
 
 .is-in-conflict{
   background: red;
+}
+
+#user-input-menu{
+  padding: 0 0;
+  margin: 0 auto;
+  background: $color-white;
+  max-width: 500px;
+  border: 5px solid lighten($color-java-blue, 40%);
+  border-radius: 5px;
+}
+
+.input-item{
+  display: inline-block;
+  width: 20%;
+  box-sizing: border-box;
+  border: 1px solid $color-ebony;
+  vertical-align: bottom;
+  height: 50px;
+  line-height: 50px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.input-item:hover{
+  cursor: pointer;
+  background: $color-java-blue;
 }
