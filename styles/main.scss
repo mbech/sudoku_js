@@ -54,17 +54,20 @@ body{
   border-bottom: 5px solid darken($color-java-blue, 20%);
 }
 
-.is-selected{
-  background: lighten($color-java-blue, 10%);
-  color: $color-white;
+.is-highlighted{
+  background: lighten($color-java-blue, 40%);
 }
 
-.is-highlighted{
-  background: lighten($color-java-blue, 30%);
+.is-selected{
+  background: lighten($color-java-blue, 10%);
 }
 
 .is-in-conflict{
   background: red;
+}
+
+.is-user-val{
+  color: $color-java-blue;
 }
 
 #user-input-menu{

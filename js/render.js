@@ -38,6 +38,7 @@ SUD.render = {
       $board.append($block); 
     };
     this.selectedCell(board);
+    this.highlightNeighbors(board);
   },
 
   selectedCell: function(board){
@@ -46,6 +47,25 @@ SUD.render = {
     $cell.addClass("is-selected");
   },
 
+  //find neighbors of selected cell and apply 'is-highlighted' class
+  highlightNeighbors: function(board){
+    $(".sudo-cell.is-highlighted").removeClass("is-highlighted");
+
+    var selectedId = board.selectedCell;
+    var rowNeighborIds = board.neighborsRow(selectedId);
+    var colNeighborIds = board.neighborsCol(selectedId);
+    var blockNeighborIds = board.neighborsBlock(selectedId);
+ 
+    var allNeighbors = rowNeighborIds.concat(colNeighborIds, blockNeighborIds);
+
+    var len = allNeighbors.length;
+    for(var i = 0; i < len; i++){
+      var cellId = "cell_" + allNeighbors[i];
+      var $currentCell = $("#" + cellId);
+      $currentCell.addClass("is-highlighted");
+    };
+  },
+  
   userInputMenu: function(){
     var $menu = $("<menu>", {id: "user-input-menu"}); 
     //Add menu input divs for values, 1 through 9

@@ -41,15 +41,17 @@ body {
   border-top: 1px solid #1fbad6;
   border-bottom: 5px solid #126d7d; }
 
-.is-selected {
-  background: #44cbe4;
-  color: white; }
-
 .is-highlighted {
-  background: #9de4f1; }
+  background: #caf0f7; }
+
+.is-selected {
+  background: #44cbe4; }
 
 .is-in-conflict {
   background: red; }
+
+.is-user-val {
+  color: #1fbad6; }
 
 #user-input-menu {
   padding: 0 0;
