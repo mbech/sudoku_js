@@ -43,7 +43,7 @@ SUD.Board.prototype = {
     var rowNeighbors = [];
     var cellRow = this.getCellRow(cellId);
     for(var i=0; i < 81; i++){
-      if(this.getCellRow(i) === cellRow){
+      if(i !== cellId && this.getCellRow(i) === cellRow){
         rowNeighbors.push(i);
       }
     }
@@ -65,27 +65,27 @@ SUD.Board.prototype = {
     var blockNeighbors = [];
     var cellBlock = this.getCellBlock(cellId);
     for(var i=0; i < 81; i++){
-      if(this.getCellBlock(i) === cellBlock){
+      if(i !== cellId && this.getCellBlock(i) === cellBlock){
         blockNeighbors.push(i);
       }
     }
     return blockNeighbors;
   },
 
-  checkNeighborConflict: function(cellId, val_attempt){
+  checkNeighborConflict: function(cellId, value){
     var conflicts = {}; 
     var rowNeighbors = this.neighborsRow(cellId);
     var colNeighbors = this.neighborsCol(cellId);
     var blockNeighbors = this.neighborsBlock(cellId);
 
     for(var i=0; i < 9; i++){
-      if(this.getCellVal(rowNeighbors[i]) === val_attempt){
+      if(this.getCellVal(rowNeighbors[i]) === value){
         conflicts.row = true;
       }
-      if(this.getCellVal(colNeighbors[i]) === val_attempt){
+      if(this.getCellVal(colNeighbors[i]) === value){
         conflicts.col = true;
       }
-      if(this.getCellVal(blockNeighbors[i]) === val_attempt){
+      if(this.getCellVal(blockNeighbors[i]) === value){
         conflicts.block = true;
       }
     }

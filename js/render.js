@@ -44,8 +44,8 @@ SUD.render = {
     $cell.text(newVal);
   },
 
+  //find neighbors of selected cell and apply 'is-highlighted' class
   neighborHighlight: function(board){
-    //find neighbors of selected cell and apply 'is-highlighted' class
     $(".sudo-cell.is-highlighted").removeClass("is-highlighted");
 
     var selectedId = board.selectedCell;
@@ -53,14 +53,70 @@ SUD.render = {
     var colNeighborIds = board.neighborsCol(selectedId);
     var blockNeighborIds = board.neighborsBlock(selectedId);
 
-    var allNeighbors = rowNeighborIds.concat(colNeighborIds, blockNeighborIds);
+    //Concat keeps duplicate values, possibility for 'is-multi-select' style 
+    var allNeighborIds = rowNeighborIds.concat(colNeighborIds, blockNeighborIds);
 
-    var len = allNeighbors.length;
+    var len = allNeighborIds.length;
     for(var i = 0; i < len; i++){
-      var cellId = "cell_" + allNeighbors[i];
+      var cellId = "cell_" + allNeighborIds[i];
       var $currentCell = $("#" + cellId);
       $currentCell.addClass("is-highlighted");
     }
+  },
+
+  //find neighbors of selected cell and apply (or clear) conflicts
+  neighborConflict: function(board, selectedValue){
+
+    var selectedId = board.selectedCell;
+    var conflicts = board.checkNeighborConflict(selectedId, selectedValue);
+    var rowConflictIds = [];  //initializing here so concat doesn't fail
+    var colConflictIds = [];
+    var blockConflictIds = [];
+    var allConflictIds = [];
+
+    //start by clearing selectedCell's associated conflicts
+    $('.sudo-cell').each(function(){
+      console.log("ok");
+      $(this).removeData("conflict_" + selectedId);
+    })
+
+    if(selectedValue !== 0){
+      //if selected value is not 0, we need to collect ids of cell conflicts.
+      if(conflicts.row){
+        rowConflictIds = board.neighborsRow(selectedId);
+      }
+      if(conflicts.col){
+        colConflictIds = board.neighborsCol(selectedId);
+      }
+      if(conflicts.block){
+        blockConflictIds = board.neighborsBlock(selectedId);
+      }
+
+      allConflictIds = rowConflictIds.concat(colConflictIds, blockConflictIds);
+
+      //all conflict ids gathered, so update each with new conflict (or clear)
+      var len = allConflictIds.length;
+      for(var i = 0; i < len; i++){
+        var cellId = "cell_" + allConflictIds[i];
+        var $currentCell = $("#" + cellId);
+        //store info about conflict in the node with $.data(key,val)
+        $currentCell.data("conflict_" + selectedId, selectedValue);
+        $currentCell.addClass("is-in-conflict");
+      }
+    }
+    //lastly, remove conflict class if this was the last conflict for that cell
+    //(if the selectedValue was 0, e.g. 'erase', clearing the conflicts is
+    //all we have to do)
+    this.clearOldConflicts();
+  },
+
+  clearOldConflicts: function(){
+    //if all conflict data is removed, remove the class to unstyle it
+    $(".sudo-cell").each(function(){
+      if($.isEmptyObject($(this).data())){
+        $(this).removeClass("is-in-conflict");
+      } 
+    })
   },
 
   userInputMenu: function(){

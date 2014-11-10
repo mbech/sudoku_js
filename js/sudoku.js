@@ -33,4 +33,5 @@ SUD.updateCellSelection = function(cellId){
 SUD.updateCellValue = function(cellId, value){
   this.currentBoard.setCellVal(cellId, value);  
   this.render.cellValueChange(this.currentBoard);
+  this.render.neighborConflict(this.currentBoard, value);
 };
