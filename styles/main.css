@@ -34,7 +34,8 @@ body {
   font-size: 1.5em;
   height: 50px;
   line-height: 50px;
-  text-align: center; }
+  text-align: center;
+  font-weight: bold; }
 
 .sudo-cell:hover, .is-selected {
   cursor: pointer;
@@ -53,7 +54,8 @@ body {
   background: red; }
 
 .is-locked-val {
-  color: #070716; }
+  color: #070716;
+  font-weight: normal; }
 
 #user-input-menu {
   padding: 0 0;

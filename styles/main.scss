@@ -46,6 +46,7 @@ body{
   height: 50px;
   line-height: 50px;
   text-align: center;
+  font-weight: bold;
 }
 
 .sudo-cell:hover, .is-selected{
@@ -70,6 +71,7 @@ body{
 
 .is-locked-val{
   color: $color-ebony;
+  font-weight: normal;
 }
 
 #user-input-menu{
