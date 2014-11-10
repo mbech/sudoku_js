@@ -58,13 +58,16 @@ body {
 .is-in-conflict {
   background: #ed145b; }
 
+.is-conflict-source {
+  color: #ed145b;
+  background: white; }
+
 .is-selected {
   color: white;
   background: #44cbe4; }
 
-.is-conflict-source {
-  color: #ed145b;
-  background: white; }
+.is-selected.is-conflict-source {
+  color: #ed145b; }
 
 .is-locked-val {
   color: #070716;

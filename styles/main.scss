@@ -75,16 +75,19 @@ body{
   background: $color-red;
 }
 
-.is-selected{
-  color: $color-white;
-  background: lighten($color-java-blue, 10%);
-}
-
 .is-conflict-source{
   color: $color-red;
   background: $color-white;
 }
 
+.is-selected{
+  color: $color-white;
+  background: lighten($color-java-blue, 10%);
+}
+
+.is-selected.is-conflict-source{
+  color: $color-red;  
+}
 .is-locked-val{
   color: $color-ebony;
   font-weight: normal;
