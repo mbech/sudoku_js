@@ -23,7 +23,11 @@ SUD.bind = {
       var selectedValue = $(this).attr("data-input-val");
       selectedValue = parseInt(selectedValue, 10);
 
-      SUD.updateCellValue(selectedCellId, selectedValue);  
+      if($("#cell_" + selectedCellId).hasClass("is-locked-val")){
+        return; 
+      } else {
+        SUD.updateCellValue(selectedCellId, selectedValue);  
+      }
     });
   }
 };

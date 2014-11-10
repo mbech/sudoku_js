@@ -1,17 +1,14 @@
 //Contains functions for board draw/update DOM manipulations
 SUD.render = {
-  board: function(board){
+  initialBoard: function(board){
     var $board = $('#sudo-board');
     $board.empty();
-
     //Create and append blocks
     for(var i=0; i < 9; i++){
       var $block = $("<div>", {class: "sudo-block"}); 
       $block.attr('data-block-id', i);
-
       //Get array of cell ids in current block
       var cellIds = board.cellIdsByBlock(i);
-
       //Loop over this block's cellIds, turn them into nodes and append to block
       for(var j=0,len=cellIds.length; j < len; j++){
         var cellId = "cell_" + cellIds[j];
@@ -19,15 +16,15 @@ SUD.render = {
         var cellValText = board.getCellVal(cellIds[j]);
         if (cellValText === 0){
           cellValText = "";
+        } else { //non-zero starting values are 'locked', not user-editable
+          $cell.addClass("is-locked-val"); 
         }
         $cell.text(cellValText);
         $block.append($cell);
       }
-
       //cell nodes added to this block, so append it to the board
       $board.append($block); 
     }
-
     this.cellSelection(board);
     this.neighborHighlight(board);
   },

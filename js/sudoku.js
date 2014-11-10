@@ -16,7 +16,7 @@ SUD.run = function(sudoState){
   //create a new board instance, store it as a property
   this.currentBoard = SUD.createBoardInstance(sudoState);
   //Render the board and set up event bindings
-  this.render.board(this.currentBoard);
+  this.render.initialBoard(this.currentBoard);
   this.render.userInputMenu();
   this.bind.cellSelection();
   this.bind.inputMenu();

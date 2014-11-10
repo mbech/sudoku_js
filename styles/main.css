@@ -24,6 +24,7 @@ body {
   background: #dedede; }
 
 .sudo-cell {
+  color: #126d7d;
   display: inline-block;
   box-sizing: border-box;
   border: 1px solid #070716;
@@ -45,13 +46,14 @@ body {
   background: #caf0f7; }
 
 .is-selected {
+  color: white;
   background: #44cbe4; }
 
 .is-in-conflict {
   background: red; }
 
-.is-user-val {
-  color: #1fbad6; }
+.is-locked-val {
+  color: #070716; }
 
 #user-input-menu {
   padding: 0 0;
