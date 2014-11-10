@@ -97,7 +97,7 @@ SUD.Board.prototype = {
     for(var i=0; i < 81; i++){
       if(this.getCellBlock(i) === blockId){
         cellIds.push(i);
-     }
+      }
     }
     return cellIds;
   }

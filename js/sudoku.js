@@ -19,12 +19,18 @@ SUD.run = function(sudoState){
   this.render.board(this.currentBoard);
   this.render.userInputMenu();
   this.bind.cellSelection();
+  this.bind.inputMenu();
 };
 
-SUD.updateSelectedCell = function(cellId){
+SUD.updateCellSelection = function(cellId){
   //update data in board object 
   this.currentBoard.setSelectedCell(cellId);
   //then rerender based on that updated board
-  this.render.selectedCell(this.currentBoard);
-  this.render.highlightedNeighbors(this.currentBoard);
+  this.render.cellSelection(this.currentBoard);
+  this.render.neighborHighlight(this.currentBoard);
+};
+
+SUD.updateCellValue = function(cellId, value){
+  this.currentBoard.setCellVal(cellId, value);  
+  this.render.cellValueChange(this.currentBoard);
 };

@@ -28,18 +28,27 @@ SUD.render = {
       $board.append($block); 
     }
 
-    this.selectedCell(board);
-    this.highlightedNeighbors(board);
+    this.cellSelection(board);
+    this.neighborHighlight(board);
   },
 
-  selectedCell: function(board){
+  cellSelection: function(board){
     var $cell = $("#cell_" + board.selectedCell);  
     $(".sudo-cell.is-selected").removeClass("is-selected");
     $cell.addClass("is-selected");
   },
 
-  //find neighbors of selected cell and apply 'is-highlighted' class
-  highlightedNeighbors: function(board){
+  cellValueChange: function(board){
+    var $cell = $("#cell_" + board.selectedCell);  
+    var newVal = board.getCellVal(board.selectedCell);
+    if (newVal === 0){
+      newVal = "";
+    }
+    $cell.text(newVal);
+  },
+
+  neighborHighlight: function(board){
+    //find neighbors of selected cell and apply 'is-highlighted' class
     $(".sudo-cell.is-highlighted").removeClass("is-highlighted");
 
     var selectedId = board.selectedCell;
