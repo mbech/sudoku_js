@@ -33,6 +33,11 @@ SUD.render = {
     var $cell = $("#cell_" + board.selectedCell);  
     $(".sudo-cell.is-selected").removeClass("is-selected");
     $cell.addClass("is-selected");
+    if($cell.hasClass("is-locked-val")){
+      $("#user-input-menu").addClass("input-disabled");
+    } else {
+      $("#user-input-menu").removeClass("input-disabled");
+    }
   },
 
   cellValueChange: function(board){
@@ -78,7 +83,10 @@ SUD.render = {
     $('.sudo-cell').each(function(){
       console.log("ok");
       $(this).removeData("conflict_" + selectedId);
-    })
+    });
+
+    //remove 'is-conflict-source' from selected cell until it's guilty again
+    $("#cell_" + selectedId).removeClass("is-conflict-source");
 
     if(selectedValue !== 0){
       //if selected value is not 0, we need to collect ids of cell conflicts.
@@ -91,11 +99,14 @@ SUD.render = {
       if(conflicts.block){
         blockConflictIds = board.neighborsBlock(selectedId);
       }
-
       allConflictIds = rowConflictIds.concat(colConflictIds, blockConflictIds);
-
-      //all conflict ids gathered, so update each with new conflict (or clear)
       var len = allConflictIds.length;
+
+      //if len of allConflictIds > 0, selected Cell is a source of conflict
+      if(len > 0){
+        $("#cell_" + selectedId).addClass("is-conflict-source");
+      }
+      //all conflict ids gathered, so update each with new conflict (or clear)
       for(var i = 0; i < len; i++){
         var cellId = "cell_" + allConflictIds[i];
         var $currentCell = $("#" + cellId);
@@ -116,7 +127,7 @@ SUD.render = {
       if($.isEmptyObject($(this).data())){
         $(this).removeClass("is-in-conflict");
       } 
-    })
+    });
   },
 
   userInputMenu: function(){
