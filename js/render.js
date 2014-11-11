@@ -2,14 +2,18 @@
 SUD.render = {
   initialBoard: function(board){
     var $board = $('#sudo-board');
+    //wipe out any existing rendered board
     $board.empty();
-    //Create and append blocks
+
+    //create and append blocks
     for(var i=0; i < 9; i++){
       var $block = $("<div>", {class: "sudo-block"}); 
       $block.attr('data-block-id', i);
-      //Get array of cell ids in current block
+
+      //get array of cell ids in current block
       var cellIds = board.cellIdsByBlock(i);
-      //Loop over this block's cellIds, turn them into nodes and append to block
+
+      //create nodes and append to block
       for(var j=0,len=cellIds.length; j < len; j++){
         var cellId = "cell_" + cellIds[j];
         var $cell = $("<div>", {id: cellId, class: "sudo-cell"}); 
@@ -22,7 +26,7 @@ SUD.render = {
         $cell.text(cellValText);
         $block.append($cell);
       }
-      //cell nodes added to this block, so append it to the board
+      //all cell nodes added to this block, so append (render) it on the board
       $board.append($block); 
     }
     this.cellSelection(board);
@@ -49,7 +53,6 @@ SUD.render = {
     $cell.text(newVal);
   },
 
-  //find neighbors of selected cell and apply 'is-highlighted' class
   neighborHighlight: function(board){
     $(".sudo-cell.is-highlighted").removeClass("is-highlighted");
 
@@ -69,12 +72,11 @@ SUD.render = {
     }
   },
 
-  //find neighbors of selected cell and apply (or clear) conflicts
   neighborConflict: function(board, selectedValue){
-
     var selectedId = board.selectedCell;
     var conflicts = board.checkNeighborConflict(selectedId, selectedValue);
-    var rowConflictIds = [];  //initializing here so concat doesn't fail
+    //initializing the following arrays here so concat doesn't fail
+    var rowConflictIds = [];
     var colConflictIds = [];
     var blockConflictIds = [];
     var allConflictIds = [];

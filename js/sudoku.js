@@ -13,9 +13,9 @@ SUD.createBoardInstance = function(sudoState){
 };
 
 SUD.run = function(sudoState){
-  //create a new board instance, store it as a property
-  this.currentBoard = SUD.createBoardInstance(sudoState);
-  //Render the board and set up event bindings
+  //create a new board instance, store it as a property of the app
+  this.currentBoard = this.createBoardInstance(sudoState);
+  //render the board and set up event bindings
   this.render.initialBoard(this.currentBoard);
   this.render.userInputMenu();
   this.bind.cellSelection();
@@ -34,7 +34,7 @@ SUD.updateCellValue = function(cellId, value){
   this.currentBoard.setCellVal(cellId, value);  
   this.render.cellValueChange(this.currentBoard);
   this.render.neighborConflict(this.currentBoard, value);
-  //Value entered, check if game has been won
+  //value has changed, check if game has been won
   if(this.currentBoard.isSolved()){
     var playAgain = confirm("A Winner Is You!\n Play Again?");
     if(playAgain){
