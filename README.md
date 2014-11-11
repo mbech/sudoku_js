@@ -2,6 +2,8 @@ sudoku_js
 =========
 #Front End Sudoku!
 
+[Link to running code (GitHub Pages)](http://mbech.github.io/sudoku_js/)
+
 ###Structure of the application:
 I structured the app as a basic MVC pattern:
 
