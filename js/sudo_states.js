@@ -17,5 +17,15 @@ SUD.sudoStates = {
       easySudo[i] = parseInt(easySudo[i], 10);
     } 
     return easySudo;
+  },
+
+  nearlySolvedExample: function(){
+    var nearlySolvedState = "534678912672195348198342567859761423426853791713924856961537284287419635345286170";
+    nearlySolvedState = nearlySolvedState.split('');
+
+    for(var i=0, len=nearlySolvedState.length; i < len; i++){ 
+      nearlySolvedState[i] = parseInt(nearlySolvedState[i], 10);
+    } 
+    return nearlySolvedState;
   }
 };

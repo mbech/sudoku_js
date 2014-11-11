@@ -81,7 +81,6 @@ SUD.render = {
 
     //start by clearing selectedCell's associated conflicts
     $('.sudo-cell').each(function(){
-      console.log("ok");
       $(this).removeData("conflict_" + selectedId);
     });
 
@@ -131,6 +130,9 @@ SUD.render = {
   },
 
   userInputMenu: function(){
+    //clear for entire page redraw 
+    $("#user-input-container").empty();
+
     var $menu = $("<menu>", {id: "user-input-menu"}); 
     //Add menu input divs for values, 1 through 9
     for(var i = 1; i < 10; i++){

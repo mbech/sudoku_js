@@ -100,5 +100,26 @@ SUD.Board.prototype = {
       }
     }
     return cellIds;
+  },
+
+  isSolved: function(){
+    //Should be true if all cells are filled and there are no conflicts
+    //First, check if the sum of cell values matches that of a completed board 
+    var FULL_SUDO_SUM = 405;
+    var cellSum = this.state.reduce(function(prev, current){
+      return prev + current;
+    });
+    if(cellSum !== FULL_SUDO_SUM){
+      return false;
+    } else {
+      //sum of cell values adds up, so check each cell for conflicts
+      for(var i = 0, len = this.state.length; i < len; i++){
+        var cellConflicts = this.checkNeighborConflict(i, this.state[i]);
+        if( !$.isEmptyObject(cellConflicts)){
+          return false;
+        }
+      }
+    }
+    return true;
   }
 };

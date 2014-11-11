@@ -34,4 +34,11 @@ SUD.updateCellValue = function(cellId, value){
   this.currentBoard.setCellVal(cellId, value);  
   this.render.cellValueChange(this.currentBoard);
   this.render.neighborConflict(this.currentBoard, value);
+  //Value entered, check if game has been won
+  if(this.currentBoard.isSolved()){
+    var playAgain = confirm("A Winner Is You!\n Play Again?");
+    if(playAgain){
+    this.run();
+    }
+  }
 };
