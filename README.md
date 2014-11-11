@@ -11,7 +11,9 @@ I structured the app as a basic MVC pattern:
 
 Additional objects include:
 * a bind object, that sets up event listeners on rendered DOM elements, with callbacks to the controller
-* a sudoStates object to hold starting configurations (the wikipedia example board) as an input for initializing board objects.
+* a sudoStates object to hold starting configurations (the wikipedia example board) as an input for initializing board objects
+
+ 
 ###Technologies used:
 * JQuery - slightly more concise selectors, event bindings.  Didn't end up using much of the utility though, could probably have stuck with vanilla JS.
 * normalize.css - to help out with more consistant styling across browsers.
@@ -28,9 +30,9 @@ Additional objects include:
 ###To implement if additional time:
 * **Add an interface for the user to load/create different boards from sudoState (possibly as URL query string).** The states are stored in an 81-length string of digits (0 for empty cell).  Creating and running a new board in the app takes a simple SUD method call:
 
-```js
-SUD.run(sudoStateString);
-```
+		```js
+		SUD.run(sudoStateString);
+		```
 
 *  **Refactor the board state to contain actual cell objects rather than numbers, reducing the logic required in render.**  Info about cell conflicts ended up being kept as data on the DOM nodes (as there was no 'cell' object kept in board), meaning render had to assign/update this data rather than simply formatting/displaying existing board data. Refactoring the board object to be the authority on all board-related info (such as current cells in conflict, sources of cell conflicts).
 
