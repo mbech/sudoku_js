@@ -12,19 +12,17 @@ I structured the app as a basic MVC pattern:
 * Controller - the SUD namespace, with namespace level methods to coordinate calls to board and render methods, triggered on page load or user-input
 
 Additional objects include:
+
 * a bind object, that sets up event listeners on rendered DOM elements, with callbacks to the controller
 * a sudoStates object to hold starting configurations (the wikipedia example board) as an input for initializing board objects
 
  
-###Technologies used:
+###Technologies used (and reasons):
 * JQuery - slightly more concise selectors, event bindings.  Didn't end up using much of the utility though, could probably have stuck with vanilla JS.
 * normalize.css - to help out with more consistant styling across browsers.
 * SCSS - no huge advantage here over plain css as there's not a lot to style.  Still, the variables are always nice for quickly trying different color-schemes.
 
-
-###Reasoning behind technical choices:
-
-###Trade-offs made:
+###Trade-offs made (and reasons):
 1. Simpler board representation using an array of numbers rather than object (saved some typing and initial complexity, but probably would have been cleaner to use cell objects, as described in next section)
 2. More specific render methods to handle differnt types of redraws, rather than just redrawing the board every time.  (More code, but should save on some expensive DOM manipulation)
 3. Per the "no frameworks allowed" instructions, I assumed that included testing frameworks (e.g. Jasmine), so I held off on writing tests from scratch.  In retrospect, it would have been worth taking time to write a basic assertEq with some console logs to verify board state manipulation, rather than having to confirm manually.
