@@ -5,6 +5,9 @@ $color-ebony: #070716;
 $color-java-blue: #1FBAD6;
 $color-red: #ED145B;
 
+//Media breakpoints
+$media-height-sm-max: 500px;
+
 html, body{
   height: 100%;
 }
@@ -23,7 +26,8 @@ body{
 }
 
 #sudo-board{
-  margin: 1em auto;
+  margin: 1% auto;
+  height: 70%;
   max-width: 500px;
   max-height: 500px;
   border: 5px solid lighten($color-java-blue, 40%);
@@ -53,11 +57,17 @@ body{
   height: 34%;
   vertical-align: bottom;
   font-size: 1.5em;
-  height: 50px;
-  line-height: 50px;
+  line-height: 2;
   text-align: center;
   font-weight: bold;
+  //help keep text centered at reduced heights
+  //could alternately refactor to have cells be 'display: table-cell' with
+  //'vertical-align: middle'
+  @media screen and ( max-height: $media-height-sm-max){
+    line-height: 1.5;
+  }
 }
+
 
 .sudo-cell:hover, .is-selected{
   cursor: pointer;
@@ -93,11 +103,16 @@ body{
   font-weight: normal;
 }
 
+#user-input-container{
+  max-height: 15%;
+}
+
 #user-input-menu{
   padding: 0 0;
   margin: 0 auto;
-  background: $color-white;
+  height: 100%;
   max-width: 500px;
+  background: $color-white;
   border: 5px solid lighten($color-java-blue, 40%);
   border-radius: 5px;
 }
@@ -110,13 +125,16 @@ body{
 .input-item{
   display: inline-block;
   width: 20%;
+  height: 50%;
   box-sizing: border-box;
   border: 1px solid $color-ebony;
-  vertical-align: bottom;
-  height: 50px;
-  line-height: 50px;
   font-size: 2em;
+  line-height: 1.5;
   text-align: center;
+  //reduce font-size if there's not much height (e.g. iphone 4)
+  @media screen and ( max-height: $media-height-sm-max){
+    font-size: 1.5em;
+  }
 }
 
 .input-disabled > .input-item:hover{

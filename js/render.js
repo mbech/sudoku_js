@@ -142,7 +142,7 @@ SUD.render = {
     }
     //Special case for last item in menu, 'erase'
     var $itemErase = $("<div>", {class: "input-item"});  
-    $itemErase.attr("data-input-val", 0).text("erase");
+    $itemErase.attr("data-input-val", 0).text("X");
     $menu.append($itemErase);
 
     $("#user-input-container").append($menu);
